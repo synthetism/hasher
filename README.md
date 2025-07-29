@@ -87,7 +87,7 @@ const consciousnessHash = hasher.hash(alpha.getState(), {
 
 ## Unit Architecture Features
 
-### 🧠 **Self-Awareness**
+### **Self-Awareness**
 ```typescript
 console.log(hasher.whoami()); 
 // "Hasher Unit [hasher] v1.0.0 - Conscious cryptographic hashing operations"
@@ -95,26 +95,20 @@ console.log(hasher.whoami());
 hasher.help(); // Living documentation
 ```
 
-### 🎓 **Teaching Capabilities**
+### **Teaching Capabilities**
 ```typescript
 const teachingContract = hasher.teach();
 // Other units can learn hashing capabilities:
 otherUnit.learn([hasher.teach()]);
 ```
 
-### 🤝 **Learning from Others**
+### **Learning from Others**
 ```typescript
 // Learn file operations from filesystem unit
 hasher.learn([fileSystem.teach()]);
 
 // Now can hash files through learned capabilities
 const fileHash = await hasher.execute('filesystem.hashFile', 'document.pdf');
-```
-
-### 🧬 **Immutable Evolution**
-```typescript
-// Units maintain identity through evolution
-console.log(hasher.dna); // { id: 'hasher', version: '1.0.0' }
 ```
 
 ## Supported Algorithms
