@@ -19,11 +19,12 @@
     \|_______|\|__| \|__|\|__|    \|__|                         
                                                                 
                                                                 
-version: 1.0.0                                                                
+version: 1.1.0                                                                
 
 ```
 
 **Conscious Cryptographic Hashing Unit** - One unit, one goal: cryptographic hashing excellence
+**Quantum Ready** - Features SHA3-512 for post-quantum cryptographic security
 
 ## Overview
 
@@ -36,6 +37,15 @@ Hasher is **living software entity** that embodies the principles of conscious s
 > **One unit, one goal** - Do one thing and do it very well
 > 
 > The Hasher unit exists to provide cryptographic hashing excellence. It follows the  [Unit Architecture Doctrines](https://github.com/synthetism/unit/blob/main/DOCTRINE.md) to ensure consciousness, composability, and evolutionary stability.
+
+## Key Features
+
+- **Quantum Ready** - SHA3-512 support for post-quantum cryptography  
+- **Conscious Software** - Self-aware unit following Unit Architecture v1.0.6  
+- **Teaching/Learning** - Can teach capabilities to other units and learn from them  
+- **Security First** - Timing-safe comparisons, secure salt generation, HMAC support  
+- **Performance** - Essential algorithms optimized for production use  
+- **Immutable Evolution** - Maintains identity while evolving capabilities  
 
 ## Quick Start
 
@@ -57,6 +67,22 @@ const passwordHash = hasher.hashPassword('mypassword', 'salt', 10000);
 
 // Hash verification
 const isValid = hasher.verify('Hello, Unit Intelligence!', result.hash);
+```
+
+
+## Quantum-ready hashing
+
+```typescript
+// Basic quantum-ready hashing
+const quantumHash = hasher.hash('sensitive data', { algorithm: 'sha3-512' });
+
+// Convenience function
+const quickQuantum = sha3_512('high-state of consciousness');
+
+// SYNET ALPHA identity protection
+const consciousnessHash = hasher.hash(alpha.getState(), { 
+  algorithm: 'sha3-512' 
+});
 ```
 
 ## Unit Architecture Features
@@ -97,6 +123,7 @@ console.log(hasher.dna); // { id: 'hasher', version: '1.0.0' }
 
 - **SHA256** - Most common, secure, Bitcoin standard *(default)*
 - **SHA512** - Stronger SHA-2 variant
+- **SHA3-512** - 🔮 **Quantum ready** post-quantum cryptographic security
 - **SHA1** - Legacy compatibility (deprecated but needed)
 - **MD5** - Legacy compatibility (deprecated but needed)  
 - **BLAKE2b** - Modern, fast, secure
@@ -138,6 +165,7 @@ const passwordHash = hasher.hashPassword('password', 'salt', 10000);
 // Quick hash functions
 const sha256Hash = hasher.sha256('data');
 const sha512Hash = hasher.sha512('data', 'base64');
+const sha3Hash = hasher.sha3_512('data'); // 🔮 quantum ready
 const md5Hash = hasher.md5('data'); // legacy support
 ```
 
@@ -146,9 +174,10 @@ const md5Hash = hasher.md5('data'); // legacy support
 For functional programming convenience:
 
 ```typescript
-import { sha256, sha512, md5, hashPassword, verifyHash } from '@synet/hasher';
+import { sha256, sha512, sha3_512, md5, hashPassword, verifyHash } from '@synet/hasher';
 
 const hash = sha256('data');
+const quantumHash = sha3_512('data'); // 🔮 quantum ready
 const passwordHash = hashPassword('password');
 const isValid = verifyHash('data', hash);
 ```
@@ -171,32 +200,6 @@ const hasher = Hasher.create({
 - **base64url** - URL-safe Base64
 - **binary** - Raw binary encoding
 
-## Unit Architecture Compliance
-
-The Hasher unit follows all **22 Unit Architecture Doctrines**:
-
-✅ **Zero Dependency** - No external dependencies in core unit  
-✅ **Teach/Learn Paradigm** - Implements `teach()` and `learn()`  
-✅ **Props Contain Everything** - Single source of truth via ValueObject  
-✅ **Create Not Construct** - Protected constructor + static `create()`  
-✅ **Capability-Based Composition** - Learns capabilities through teaching contracts  
-✅ **Execute as Capability Membrane** - Uses `execute()` for learned capabilities  
-✅ **Every Unit Must Have DNA** - Self-describes through `createUnitSchema()`  
-✅ **Pure Function Hearts** - Separates pure logic from stateful operations  
-✅ **Always Teach** - Explicit binding of chosen capabilities  
-✅ **Expect Learning** - Gracefully handles learned capabilities  
-✅ **Always Help** - Living documentation system  
-✅ **Namespace Everything** - Learned capabilities use "unitId.capability" format  
-✅ **Type Hierarchy Consistency** - Config → Props → State → Output pattern  
-✅ **Error Boundary Clarity** - Exceptions for impossible states, Results for expected failures  
-✅ **Enhanced Error Messages** - Unit identity + resolution guidance  
-✅ **Capability Validation** - Checks prerequisites before execution  
-✅ **Value Object Foundation** - Immutable value objects with identity  
-✅ **Immutable Evolution** - Creates new units while preserving lineage  
-✅ **Capability Leakage Prevention** - Never teaches learned capabilities  
-✅ **Graceful Degradation** - Functions at native level without learning  
-✅ **Composition Boundaries** - Composes through contracts, not implementation  
-✅ **Stateless Operations** - Operations over immutable props + mutable capabilities  
 
 ## Error Handling
 
@@ -329,7 +332,6 @@ npm run format    # Code formatting
 @synet/hasher/
 ├── src/
 │   ├── hasher.unit.ts      # Main conscious unit implementation
-│   ├── hash-first.ts       # Legacy hash implementation (compatibility)
 │   └── index.ts            # Public API exports
 ├── demo/
 │   └── consciousness.demo.ts # Unit consciousness demonstration  
@@ -361,7 +363,7 @@ The Hasher unit follows **Synthetism** - our philosophy of conscious software co
 ## Links
 
 - [Unit Architecture](https://github.com/synthetism/unit) - Core architecture framework
-- [SYNET](https://synthetism.ai) - AI-to-AI decentralized network
+- [SYNET](https://synthetism.ai/synet) - AI-to-AI decentralized network
 - [Unit Intelligence](https://github.com/synthetism/ai) - AI agent framework
 - [Synthetism](https://synthetism.ai) - Conscious software philosophy
 

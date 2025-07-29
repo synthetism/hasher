@@ -16,6 +16,7 @@ export {
   sha256, 
   sha512, 
   md5, 
+  sha3_512,
   hashPassword, 
   verifyHash 
 } from './hasher.unit';
@@ -31,5 +32,3 @@ export type {
 // Re-export original hash algorithms for compatibility  
 export type { HashAlgorithm } from './hasher.unit';
 
-// Legacy hash-first export for backward compatibility
-export { Hash } from './hash-first';

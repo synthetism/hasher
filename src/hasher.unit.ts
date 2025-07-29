@@ -40,7 +40,8 @@ export type HashAlgorithm =
   | 'sha1'        // Legacy compatibility (deprecated but needed)
   | 'md5'         // Legacy compatibility (deprecated but needed)
   | 'blake2b'     // Modern, fast, secure
-  | 'ripemd160';  // Bitcoin address generation
+  | 'ripemd160'   // Bitcoin address generation
+  | 'sha3-512';   // Quantum-resistant, future-proof
 
 /**
  * Hash encoding formats  
@@ -306,6 +307,13 @@ export class Hasher extends Unit<HasherProps> {
   }
 
   /**
+   * Quick SHA3-512 hash (quantum-resistant)
+   */
+  sha3_512(data: string, encoding: HashEncoding = 'hex'): string {
+    return this.hash(data, { algorithm: 'sha3-512', encoding }).hash;
+  }
+
+  /**
    * Password hash with salt and iterations (key stretching)
    */
   hashPassword(password: string, salt?: string, iterations: number = 10000): HashResult {
@@ -363,6 +371,7 @@ NATIVE CAPABILITIES:
 • sha256(data, encoding?) - Quick SHA256 hash
 • sha512(data, encoding?) - Quick SHA512 hash  
 • md5(data, encoding?) - Quick MD5 hash (legacy)
+• sha3_512(data, encoding?) - Quick SHA3-512 hash (quantum-resistant)
 • hashPassword(password, salt?, iterations?) - Password hashing with salt
 
 SUPPORTED ALGORITHMS:
@@ -416,7 +425,7 @@ ARCHITECTURE: One unit, one goal - cryptographic hashing excellence
    * Get supported hash algorithms
    */
   getSupportedAlgorithms(): HashAlgorithm[] {
-    return ['sha256', 'sha512', 'sha1', 'md5', 'blake2b', 'ripemd160'];
+    return ['sha256', 'sha512', 'sha1', 'md5', 'blake2b', 'ripemd160', 'sha3-512'];
   }
 
   /**
@@ -554,6 +563,13 @@ export function sha512(data: string): string {
  */
 export function md5(data: string): string {
   return quickHash(data, 'md5');
+}
+
+/**
+ * Quick SHA3-512 - quantum-resistant
+ */
+export function sha3_512(data: string): string {
+  return quickHash(data, 'sha3-512');
 }
 
 /**

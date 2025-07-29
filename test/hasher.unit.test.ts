@@ -5,7 +5,7 @@
  */
 
 import { describe, test, expect, beforeEach } from 'vitest';
-import { Hasher, sha256, quickHash, hashPassword, verifyHash } from '../src/hasher.unit';
+import { Hasher, sha256, sha3_512, quickHash, hashPassword, verifyHash } from '../src/hasher.unit';
 
 describe('Hasher Unit - Consciousness Tests', () => {
   let hasher: Hasher;
@@ -79,12 +79,19 @@ describe('Hasher Unit - Core Hashing Operations', () => {
     
     const sha256Result = hasher.hash(data, { algorithm: 'sha256' });
     const sha512Result = hasher.hash(data, { algorithm: 'sha512' });
+    const sha3Result = hasher.hash(data, { algorithm: 'sha3-512' });
     const md5Result = hasher.hash(data, { algorithm: 'md5' });
     
     expect(sha256Result.hash).not.toBe(sha512Result.hash);
     expect(sha256Result.hash).not.toBe(md5Result.hash);
+    expect(sha256Result.hash).not.toBe(sha3Result.hash);
     expect(sha512Result.hash.length).toBe(128); // SHA512 = 128 hex chars
+    expect(sha3Result.hash.length).toBe(128); // SHA3-512 = 128 hex chars
     expect(md5Result.hash.length).toBe(32); // MD5 = 32 hex chars
+    
+    // SHA3-512 should produce different hash than SHA512 for same input
+    expect(sha3Result.hash).not.toBe(sha512Result.hash);
+    expect(sha3Result.algorithm).toBe('sha3-512');
   });
 
   test('Encoding Support', () => {
@@ -198,10 +205,15 @@ describe('Hasher Unit - Pure Function Exports', () => {
     const data = 'test data';
     
     const sha256Hash = sha256(data);
+    const sha3Hash = sha3_512(data);
     const quickSha256 = quickHash(data, 'sha256');
+    const quickSha3 = quickHash(data, 'sha3-512');
     
     expect(sha256Hash).toBe(quickSha256);
+    expect(sha3Hash).toBe(quickSha3);
     expect(sha256Hash.length).toBe(64); // SHA256 hex length
+    expect(sha3Hash.length).toBe(128); // SHA3-512 hex length
+    expect(sha256Hash).not.toBe(sha3Hash); // Different algorithms, different results
   });
 
   test('Password Hashing Function', () => {

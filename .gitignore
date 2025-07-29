@@ -1,9 +1,4 @@
 .DS_Store
 dist
-logs
 node_modules/
-temp
 private
-demo
-units
-tmp
