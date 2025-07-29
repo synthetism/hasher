@@ -316,7 +316,7 @@ export class Hasher extends Unit<HasherProps> {
   /**
    * Password hash with salt and iterations (key stretching)
    */
-  hashPassword(password: string, salt?: string, iterations: number = 10000): HashResult {
+  hashPassword(password: string, salt?: string, iterations = 10000): HashResult {
     const actualSalt = salt || this.generateSalt();
     return this.hash(password, { 
       algorithm: 'sha512', 
@@ -511,7 +511,7 @@ ARCHITECTURE: One unit, one goal - cryptographic hashing excellence
   /**
    * Generate random salt - pure function
    */
-  private generateSalt(length: number = 32): string {
+  private generateSalt(length = 32): string {
     const crypto = require('node:crypto');
     return crypto.randomBytes(length).toString('hex');
   }
@@ -575,7 +575,7 @@ export function sha3_512(data: string): string {
 /**
  * Quick password hash with salt
  */
-export function hashPassword(password: string, salt?: string, iterations: number = 10000): HashResult {
+export function hashPassword(password: string, salt?: string, iterations = 10000): HashResult {
   return Hasher.create().hashPassword(password, salt, iterations);
 }
 
