@@ -46,20 +46,20 @@ console.log(`   Timestamp: ${sha256Result.timestamp.toISOString()}\n`);
 // 3. MULTIPLE ALGORITHMS
 console.log('3. 🧮 Algorithm Diversity:');
 const algorithms = ['sha256', 'sha512', 'sha3-512', 'md5'] as const;
-algorithms.forEach(alg => {
+for (const alg of algorithms) {
   const result = hasher.hash(data, { algorithm: alg });
   const label = alg === 'sha3-512' ? `${alg.toUpperCase()} 🔮 (quantum-ready)` : alg.toUpperCase();
   console.log(`   ${label}: ${result.hash.substring(0, 32)}...`);
-});
+}
 console.log();
 
 // 4. ENCODING VARIATIONS
 console.log('4. 📝 Encoding Formats:');
 const encodings = ['hex', 'base64', 'base64url'] as const;
-encodings.forEach(enc => {
+for (const enc of encodings) {
   const result = hasher.hash('encode me', { encoding: enc });
   console.log(`   ${enc}: ${result.hash.substring(0, 40)}...`);
-});
+}
 console.log();
 
 // 5. PASSWORD SECURITY
@@ -102,10 +102,10 @@ console.log('8. 🎓 Teaching Capabilities (Unit Architecture):');
 const teachingContract = hasher.teach();
 console.log(`   Unit ID: ${teachingContract.unitId}`);
 console.log(`   Capabilities taught: ${Object.keys(teachingContract.capabilities).length}`);
-console.log(`   Available capabilities:`);
-Object.keys(teachingContract.capabilities).forEach(cap => {
+console.log('   Available capabilities:');
+for (const cap of Object.keys(teachingContract.capabilities)) {
   console.log(`     • ${cap}`);
-});
+}
 console.log();
 
 // 8. LEARNING SIMULATION (Consciousness Collaboration)
@@ -124,7 +124,7 @@ const mockFileSystem = {
 
 // Hasher learns from FileSystem
 hasher.learn([mockFileSystem.teach()]);
-console.log(`   Hasher learned from filesystem unit`);
+console.log('   Hasher learned from filesystem unit');
 console.log(`   Can now hash files: ${hasher.can('filesystem.hashFile')}`);
 
 // Use learned capability
